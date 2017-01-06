@@ -25,7 +25,49 @@ class Welcome extends CI_Controller {
 
 	public function newCustomer()
 	{
-		$this->load->view('pages/CustomerTransactions/newCustomer');
+		$data= array(
+			'customers'=> $this->CustomerModel->getCustomers()
+			);
+		$this->load->view('pages/CustomerTransactions/newCustomer',$data);
+	}
+
+
+	public function insertNewCustomer(){
+
+		$data= array(
+			'firstname'=> $this->input->post('firstName'),
+			'lastname'=> $this->input->post('lastName'),
+			'phone'=> $this->input->post('phone')
+			);
+
+		$this->CustomerModel->insertNewCustomer($data);
+
+		redirect('Welcome/newCustomer');
+	}
+
+	public function updateCustomer(){
+
+		$data= array(
+			'firstname'=> $this->input->post('edit_firstName'),
+			'lastname'=> $this->input->post('edit_lastName'),
+			'phone'=> $this->input->post('edit_phone'),
+
+			);
+		$customerId= $this->input->post('customerId');
+
+		$this->CustomerModel->updateCustomer($customerId,$data);
+
+		redirect('Welcome/newCustomer');
+	}
+
+	public function delCustomer(){
+
+		
+		$customerId= $this->input->post('del_customerId');
+
+		$this->CustomerModel->delCustomer($customerId);
+
+		redirect('Welcome/newCustomer');
 	}
 
 	public function processOrder()
