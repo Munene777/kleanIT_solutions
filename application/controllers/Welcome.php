@@ -32,6 +32,9 @@ class Welcome extends CI_Controller {
 	}
 
 
+	
+
+
 	public function insertNewCustomer(){
 
 		$data= array(
@@ -40,10 +43,12 @@ class Welcome extends CI_Controller {
 			'phone'=> $this->input->post('phone')
 			);
 
-		$this->CustomerModel->insertNewCustomer($data);
+		if($this->CustomerModel->insertNewCustomer($data))
 
 		redirect('Welcome/newCustomer');
 	}
+
+	
 
 	public function updateCustomer(){
 
@@ -60,6 +65,8 @@ class Welcome extends CI_Controller {
 		redirect('Welcome/newCustomer');
 	}
 
+	
+
 	public function delCustomer(){
 
 		
@@ -70,6 +77,9 @@ class Welcome extends CI_Controller {
 		redirect('Welcome/newCustomer');
 	}
 
+	
+
+
 	public function processOrder()
 	{
 		$this->load->view('pages/CustomerTransactions/processOrder');
@@ -78,4 +88,6 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('pages/CustomerTransactions/makePayment');
 	}
+
+	
 }

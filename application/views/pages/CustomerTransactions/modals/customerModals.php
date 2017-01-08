@@ -2,7 +2,7 @@
 
 
 
-<!-- add a customer rep Modal -->
+<!-- add a customer Modal -->
 <div id="add_customer_modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -38,7 +38,7 @@
                 </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="rep" onclick="redirectMe(this.id)" class="btn btn-default"  data-dismiss="modal">Close</button>
+        <button type="button"  class="btn btn-default"  data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -89,7 +89,7 @@
 
   </div>
 </div>
-<!--delete class rep Modal -->
+<!--delete customer Modal -->
 <div id="del_customer_modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -104,7 +104,7 @@
       <div class="modal-body">
       <input type="hidden" name="del_customerId" id="del_customerId" value="not_set" >
      
-        <p>Are you sure you want to delete this rep?</p>
+        <p>Are you sure you want to delete this Customer?</p>
       </div>
       <div class="modal-footer">
        <input type="submit" class="btn btn-primary " value="OK" >

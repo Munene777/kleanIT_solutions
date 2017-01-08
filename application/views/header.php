@@ -120,9 +120,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> New Garments Type</a></li>
-                <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i>Enter Ready Garments</a></li>
-                <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i>View Ready Garments</a></li>
+                <li><a href="<?php echo base_url() ?>index.php/GarmentsProcessing/"><i class="fa fa-circle-o"></i> New Garments Type</a></li>
+                <li><a href="<?php echo base_url() ?>index.php/GarmentsProcessing/readyGarment"><i class="fa fa-circle-o"></i>Enter Ready Garments</a></li>
+                <li><a href="<?php echo base_url() ?>index.php/GarmentsProcessing/readyGarments"><i class="fa fa-circle-o"></i>View Ready Garments</a></li>
                 
               </ul>
             </li>
@@ -133,9 +133,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i>Search for Customer</a></li>
-                <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i>Search for Orders</a></li>
-                <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Search for Payments</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>Search for Customer</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>Search for Orders</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Search for Payments</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -144,9 +144,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i>Job Order Payment Summary</a></li>
-                <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i>Detailed Customer Payment</a></li>
-                <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i>KleanIT Customer's Profile</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>Job Order Payment Summary</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>Detailed Customer Payment</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>KleanIT Customer's Profile</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -155,9 +155,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Uncollected Garments</a></li>
-                <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Collected Garments</a></li>
-                 <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Generate Garment Catalogue</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Uncollected Garments</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Collected Garments</a></li>
+                 <li><a href="#"><i class="fa fa-circle-o"></i> Generate Garment Catalogue</a></li>
               </ul>
             </li>
            
@@ -168,9 +168,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i>Payment Summary by dates</a></li>
-                <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i>Current Week Payments</a></li>
-                <li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i>Current Month Payments</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>Payment Summary by dates</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>Current Week Payments</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>Current Month Payments</a></li>
               </ul>
             </li>
             

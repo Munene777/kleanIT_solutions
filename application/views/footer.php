@@ -49,6 +49,7 @@
     <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
     <!-- page script -->
     <script type="text/javascript" src="<?php echo base_url() ?>assets/bootstrap/js/customer.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/bootstrap/js/garment.js"></script>
     
 
 

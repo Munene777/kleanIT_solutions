@@ -6,9 +6,9 @@ jQuery(document)
 				
 
 					
-					// Edit a customer
+					// Edit a garment
 
-					$(".editCustomer")
+					$(".editGarment")
 							.click(
 									function() {
 										// window.document.location =
@@ -16,38 +16,55 @@ jQuery(document)
 
 										//alert("it worked");
 
-										$("#customerId")
+										$("#categoryId")
 												.val(
 														$(this).closest('tr')
 																.children()[0].textContent);
 
-										$("#edit_firstName")
+										$("#edit_garmentype")
 												.val(
 														$(this).closest('tr')
 																.children()[1].textContent);
-										$("#edit_lastName")
+										$("#edit_desc")
 												.val(
 														$(this).closest('tr')
 																.children()[2].textContent);
-										$("#edit_phone")
+										$("#edit_normal")
 												.val(
 														$(this).closest('tr')
 																.children()[3].textContent);
+												$("#edit_express")
+												.val(
+														$(this).closest('tr')
+																.children()[4].textContent);
+
+												$("#edit_special")
+												.val(
+														$(this).closest('tr')
+																.children()[5].textContent);
+												$("#edit_pressing")
+												.val(
+														$(this).closest('tr')
+																.children()[6].textContent);
+												$("#edit_others")
+												.val(
+														$(this).closest('tr')
+																.children()[7].textContent);
 										
 
 									});
 
 					
 
-					// Delete a customer
+					// Delete a garment
 
-					$(".delCustomer")
+					$(".delGarment")
 							.click(
 									function() {
 
 										// alert("delete me, mmmhhhmmm
 										// sure??!!");
-										$("#del_customerId")
+										$("#del_categoryId")
 												.val(
 														$(this).closest('tr')
 																.children()[0].textContent);
