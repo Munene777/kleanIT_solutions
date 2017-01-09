@@ -133,9 +133,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i>Search for Customer</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>Search for Orders</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Search for Payments</a></li>
+                <li><a href="<?php echo base_url() ?>index.php/QuickSearch/customers"><i class="fa fa-circle-o"></i>Search for Customer</a></li>
+                <li><a href="<?php echo base_url() ?>index.php/QuickSearch/orders"><i class="fa fa-circle-o"></i>Search for Orders</a></li>
+                <li><a href="<?php echo base_url() ?>index.php/QuickSearch/payments"><i class="fa fa-circle-o"></i> Search for Payments</a></li>
               </ul>
             </li>
             <li class="treeview">

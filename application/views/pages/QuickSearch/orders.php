@@ -14,7 +14,7 @@
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">New Customer</a></li>
+            <li><a href="#">Orders</a></li>
            
           </ol>
           
@@ -28,41 +28,46 @@
 
               <div class="box">
                 <div class="box-header">
-                 <h3>Register a new Customer
-                 <button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#add_customer_modal">New Customer</button></h3>
+                 <h3>Search Orders</h3>
+                 
 
                 </div><!-- /.box-header -->
                 <div class="box-body">
 
 
-                <table id="customers" class="table table-bordered table-striped">
+                <table id="readyGarments" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                      <th class="hidden"></th>
-                      <th>First Name</th>
-                         <th>Last Name</th>
+                     
+                      <th>Job Order No</th>
+                         <th>Drop Date</th>
+                        <th>Pickup Date</th>
+                        <th>First Name</th>
                         <th>Mobile No</th>
-                        <th></th>
-                        <th></th>
+                        <th>Ready?</th>
+                        <th>Date</th>
+                       
                       </tr>
                     </thead>
                     <tbody>
                   
                    <?php
-                       if(!empty($customers)){
-                      foreach ($customers as $customer)
+                       if(!empty($orders)){
+                      foreach ($orders as $order)
                     {
                       echo '
                       <tr>
-                      <td class="hidden">'.$customer->customerid.'</td>
-                      <td>'.$customer->firstname.'</td>
-                        <td >'.$customer->lastname.'</td>
-                        <td>'.$customer->phone.'</td>
-                       
+                     
+                      <td>'.$order->jobcard_id.'</td>
+                        <td >'.$order->orderdate.'</td>
+                        <td>'.$order->pickdate.'</td>
+                       <td>'.$order->firstname.'</td>
+                       <td>'.$order->phone.'</td>
+                       <td>'.$order->readystatus.'</td>
+                       <td>'.$order->dateready.'</td>
                        
                         
-                         <td><a class="btn btn-link editCustomer"  data-toggle="modal" data-target="#edit_customer_modal">Edit</a></td>
-                        <td><a class="btn btn-link delCustomer"  data-toggle="modal" data-target="#del_customer_modal">Del</a></td>        
+                         
                       </tr>';
                     }
                   }
@@ -70,12 +75,15 @@
                     </tbody>
                     <tfoot>
                       <tr>
-                      <th class="hidden"></th>
-                      <th>First Name</th>
-                         <th>Last Name</th>
+                     <th>Job Order No</th>
+                         <th>Drop Date</th>
+                        <th>Pickup Date</th>
+                        <th>First Name</th>
                         <th>Mobile No</th>
-                        <th></th>
-                        <th></th>
+                        <th>Ready?</th>
+                        <th>Date</th>
+                        
+                        
                       </tr>
                     </tfoot>
                   </table>
@@ -88,10 +96,6 @@
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
     
-     <?php
- $this->load->view('pages/CustomerTransactions/modals/customerModals');
-
-?> 
   <?php
  $this->load->view('footer');
 

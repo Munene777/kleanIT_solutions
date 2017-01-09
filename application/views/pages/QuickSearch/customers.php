@@ -14,7 +14,7 @@
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">New Customer</a></li>
+            <li><a href="#">Search Customer</a></li>
            
           </ol>
           
@@ -28,22 +28,21 @@
 
               <div class="box">
                 <div class="box-header">
-                 <h3>Register a new Customer
-                 <button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#add_customer_modal">New Customer</button></h3>
+                 <h3>Quick Search Customers
+                 
 
                 </div><!-- /.box-header -->
                 <div class="box-body">
 
 
-                <table id="customers" class="table table-bordered table-striped">
+                <table id="quickSearchCustomers" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                      <th class="hidden"></th>
+                      
                       <th>First Name</th>
                          <th>Last Name</th>
                         <th>Mobile No</th>
-                        <th></th>
-                        <th></th>
+                       
                       </tr>
                     </thead>
                     <tbody>
@@ -54,15 +53,14 @@
                     {
                       echo '
                       <tr>
-                      <td class="hidden">'.$customer->customerid.'</td>
+                      
                       <td>'.$customer->firstname.'</td>
                         <td >'.$customer->lastname.'</td>
                         <td>'.$customer->phone.'</td>
                        
                        
                         
-                         <td><a class="btn btn-link editCustomer"  data-toggle="modal" data-target="#edit_customer_modal">Edit</a></td>
-                        <td><a class="btn btn-link delCustomer"  data-toggle="modal" data-target="#del_customer_modal">Del</a></td>        
+                                 
                       </tr>';
                     }
                   }
@@ -70,12 +68,11 @@
                     </tbody>
                     <tfoot>
                       <tr>
-                      <th class="hidden"></th>
+                     
                       <th>First Name</th>
                          <th>Last Name</th>
                         <th>Mobile No</th>
-                        <th></th>
-                        <th></th>
+                       
                       </tr>
                     </tfoot>
                   </table>
@@ -88,10 +85,7 @@
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
     
-     <?php
- $this->load->view('pages/CustomerTransactions/modals/customerModals');
-
-?> 
+    
   <?php
  $this->load->view('footer');
 

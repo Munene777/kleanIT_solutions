@@ -59,8 +59,8 @@
         $("#readyGarments").DataTable();
 
          $("#alreadyGarments").DataTable();
-        
-        $("#example1").DataTable();
+        $("#quickSearchCustomers").DataTable();
+        $("#customers").DataTable();
         $('#example2').DataTable({
           "paging": true,
           "lengthChange": false,
