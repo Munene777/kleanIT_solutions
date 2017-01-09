@@ -4,7 +4,7 @@
 class GarmentsProcessing extends CI_Controller {
 
 
-
+//default page for the garment processing
 public function index()
 	{
 		$data= array(
@@ -13,7 +13,7 @@ public function index()
 		$this->load->view('pages/GarmentsProcess/newGarment',$data);
 	}
 
-
+//insert a new garment
 public function insertNewGarment(){
 
 		$data= array(
@@ -32,7 +32,7 @@ public function insertNewGarment(){
 		redirect('GarmentsProcessing/');
 	}
 
-
+//update a garment
 	public function updateGarment(){
 
 		$data= array(
@@ -53,7 +53,24 @@ public function insertNewGarment(){
 	}
 
 
+//update ready status
 
+	public function readyStatus(){
+
+		$data= array(
+			'readystatus'=> $this->input->post('edit_ready'),
+			'dateready'=> $this->input->post('readyDate')
+
+			);
+
+		$id=$this->input->post('orderId');
+		if($this->GarmentModel->readyStatus($id,$data))
+
+		redirect('GarmentsProcessing/enterReadyGarment');
+	}
+
+
+//delete a garment
 	public function delGarment(){
 
 		
@@ -66,7 +83,24 @@ public function insertNewGarment(){
 
 
 
+//view garment's state 
+public function enterReadyGarment()
+	{
+		$data= array(
+			'orders'=> $this->GarmentModel->getOrders()
+			);
+		$this->load->view('pages/GarmentsProcess/enterReadyGarment',$data);
+	}
 
-	
+
+	public function readyGarments()
+	{
+		$data= array(
+			'ready'=> $this->GarmentModel->getReadyGarments()
+			);
+		$this->load->view('pages/GarmentsProcess/readyGarments',$data);
+	}
+
+
 
 }

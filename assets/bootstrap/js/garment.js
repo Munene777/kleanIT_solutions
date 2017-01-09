@@ -3,8 +3,40 @@ jQuery(document)
 				function($) {
 					
 					
-				
+				/*start the date picker*/
 
+   $("#readyDate").datepicker({dateFormat: 'yy-mm-dd'});
+
+
+   //edit ready status
+
+
+   	$(".editReady")
+							.click(
+									function() {
+										// window.document.location =
+										// $(this).data("href");
+
+										//alert("it worked");
+
+										$("#orderId")
+												.val(
+														$(this).closest('tr')
+																.children()[0].textContent);
+
+										$("#edit_ready")
+												.val(
+														$(this).closest('tr')
+																.children()[5].textContent);
+										$("#readyDate")
+												.val(
+														$(this).closest('tr')
+																.children()[6].textContent);
+
+
+
+											}
+											);
 					
 					// Edit a garment
 

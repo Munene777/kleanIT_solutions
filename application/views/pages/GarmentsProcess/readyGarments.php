@@ -14,7 +14,7 @@
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Garments Status</a></li>
+            <li><a href="#">View Ready Garments</a></li>
            
           </ol>
           
@@ -28,14 +28,14 @@
 
               <div class="box">
                 <div class="box-header">
-                 <h3>Enter Ready Garments</h3>
+                 <h3>View Ready Garments</h3>
                  
 
                 </div><!-- /.box-header -->
                 <div class="box-body">
 
 
-                <table id="readyGarments" class="table table-bordered table-striped">
+                <table id="alreadyGarments" class="table table-bordered table-striped">
                     <thead>
                       <tr>
                      
@@ -46,15 +46,15 @@
                         <th>Mobile No</th>
                         <th>Ready?</th>
                         <th>Date</th>
-                        <th></th>
+                        
                        
                       </tr>
                     </thead>
                     <tbody>
                   
                    <?php
-                       if(!empty($orders)){
-                      foreach ($orders as $order)
+                       if(!empty($ready)){
+                      foreach ($ready as $order)
                     {
                       echo '
                       <tr>
@@ -66,9 +66,6 @@
                        <td>'.$order->phone.'</td>
                        <td>'.$order->readystatus.'</td>
                        <td>'.$order->dateready.'</td>
-                       
-                        
-                         <td><a class="btn btn-link editReady"  data-toggle="modal" data-target="#edit_readyStatus_modal">Edit</a></td>
                              
                       </tr>';
                     }
@@ -84,7 +81,7 @@
                         <th>Mobile No</th>
                         <th>Ready?</th>
                         <th>Date</th>
-                        <th></th>
+                       
                         
                       </tr>
                     </tfoot>
@@ -98,10 +95,7 @@
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
     
-     <?php
- $this->load->view('pages/GarmentsProcess/modals/readyStatus');
-
-?> 
+    
   <?php
  $this->load->view('footer');
 

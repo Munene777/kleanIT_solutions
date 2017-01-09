@@ -28,7 +28,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/daterangepicker/daterangepicker.js"></script>
     <!-- datepicker -->
-    <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
     <!-- DataTables -->
     <script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
@@ -56,6 +56,10 @@
     <script>
       $(function () {
         $("#orderProcessing").DataTable();
+        $("#readyGarments").DataTable();
+
+         $("#alreadyGarments").DataTable();
+        
         $("#example1").DataTable();
         $('#example2').DataTable({
           "paging": true,

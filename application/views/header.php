@@ -9,7 +9,7 @@
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/bootstrap/font/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
@@ -121,7 +121,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="<?php echo base_url() ?>index.php/GarmentsProcessing/"><i class="fa fa-circle-o"></i> New Garments Type</a></li>
-                <li><a href="<?php echo base_url() ?>index.php/GarmentsProcessing/readyGarment"><i class="fa fa-circle-o"></i>Enter Ready Garments</a></li>
+                <li><a href="<?php echo base_url() ?>index.php/GarmentsProcessing/enterReadyGarment"><i class="fa fa-circle-o"></i>Enter Ready Garments</a></li>
                 <li><a href="<?php echo base_url() ?>index.php/GarmentsProcessing/readyGarments"><i class="fa fa-circle-o"></i>View Ready Garments</a></li>
                 
               </ul>

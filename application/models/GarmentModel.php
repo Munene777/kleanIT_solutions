@@ -17,6 +17,38 @@ public function getGarments(){
       }
     }
 
+public function getOrders(){
+  $this->db->select('*');
+  $this->db->from('order');
+  $this->db->join('customer','order.clientid=customer.customerid');
+  $query = $this->db->get();
+
+
+      if($query->num_rows() > 0)
+      {
+        return $query->result();
+      }else{
+        return NULL;
+      }
+    }
+
+
+public function getReadyGarments(){
+  $this->db->select('*');
+  $this->db->from('order');
+  $this->db->join('customer','order.clientid=customer.customerid');
+  $this->db->where('readystatus="Yes"');
+  $query = $this->db->get();
+
+
+      if($query->num_rows() > 0)
+      {
+        return $query->result();
+      }else{
+        return NULL;
+      }
+    }
+
 
 
     public function insertNewGarment($garment){
@@ -41,6 +73,22 @@ public function getGarments(){
       {
         return false;
       }
+
+
+}
+       public function readyStatus($id,$change){
+      $this->db->where('jobcard_id',$id);
+
+      if($this->db->update('order',$change)){
+
+        return true;
+      }else
+      {
+        return false;
+      }
+
+
+
 
     }
 
