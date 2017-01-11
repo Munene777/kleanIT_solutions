@@ -109,3 +109,12 @@ jQuery(document)
 
 
 });
+
+
+
+function assignCharge(id){
+
+
+	//alert(id);
+	document.getElementById(id+"charge").value= document.getElementById(id).value;
+}

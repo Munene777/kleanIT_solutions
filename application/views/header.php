@@ -99,7 +99,7 @@
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             
-            <li class="active treeview">
+            <li class="active treeview" id="customer" onclick="swapActive(this.id)">
               <a href="#">
                 <i class="fa fa-exchange"></i>
                 <span>Customer Transactions</span>
@@ -113,7 +113,7 @@
               </ul>
             </li>
            
-            <li class="treeview">
+            <li class="active treeview" id="garments" onclick="swapActive(this.id)">
               <a href="#">
                 <i class="fa fa-spinner"></i>
                 <span>Garments Process</span>
@@ -126,7 +126,7 @@
                 
               </ul>
             </li>
-            <li class="treeview">
+            <li class="active treeview" id="search" onclick="swapActive(this.id)">
               <a href="#">
                 <i class="fa fa-search"></i>
                 <span>Quick Search</span>
@@ -138,7 +138,7 @@
                 <li><a href="<?php echo base_url() ?>index.php/QuickSearch/payments"><i class="fa fa-circle-o"></i> Search for Payments</a></li>
               </ul>
             </li>
-            <li class="treeview">
+            <li class=" active treeview">
               <a href="#">
                 <i class="fa fa-table"></i> <span>Dryclaen Reports</span>
                 <i class="fa fa-angle-left pull-right"></i>
@@ -149,7 +149,7 @@
                 <li><a href="#"><i class="fa fa-circle-o"></i>KleanIT Customer's Profile</a></li>
               </ul>
             </li>
-            <li class="treeview">
+            <li class="active treeview">
               <a href="#">
                 <i class="fa fa-table"></i> <span>Garments Reports</span>
                 <i class="fa fa-angle-left pull-right"></i>
@@ -162,7 +162,7 @@
             </li>
            
             
-            <li class="treeview">
+            <li class="active treeview">
               <a href="#">
                 <i class="fa fa-table"></i> <span>Payment Reports</span>
                 <i class="fa fa-angle-left pull-right"></i>

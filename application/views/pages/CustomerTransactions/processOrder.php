@@ -66,27 +66,54 @@
                       <table id="orderProcessing" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                      <th>GarmentId</th>
+                      <th>Add to Order</th>
+                      <th class="hidden">GarmentId</th>
                       <th>Garment Type</th>
                          <th>Service Type</th>
-                        <th>Deatiled Description</th>
+                        <th>Detailed Description</th>
                         <th>Charges</th>
                         <th>Garment Inspection</th>
                       </tr>
                     </thead>
                     <tbody>
-
-                     </tbody>
-                    <tfoot>
+                       <?php
+                       if(!empty($garments)){
+                      foreach ($garments as $garment)
+                    {
+                      echo '
                       <tr>
-                      <th>GarmentId</th>
-                      <th>Garment Type</th>
-                         <th>Service Type</th>
-                        <th>Deatiled Description</th>
-                        <th>Charges</th>
-                        <th>Garment Inspection</th>
-                      </tr>
-                    </tfoot>
+                      <td><input type="checkbox" class="selectedGarment" ></td>
+                      <td class="hidden">'.$garment->categoryid.'</td>
+                      <td>'.$garment->garmentype.'</td>
+                      <td> <select class="form-control" id="type'.$garment->categoryid.'" onchange="assignCharge(this.id)">
+                        <option value="'.$garment->charges.'">Normal</option>
+                         <option value="'.$garment->express.'">Express</option>
+                         <option value="'.$garment->special.'">Special</option>
+                         <option value="'.$garment->pressing.'">Pressing</option>
+                        </select>
+                        </td>
+                        <td >'.$garment->description.'</td>
+                        
+                        <td >
+                        <input type="text" id="type'.$garment->categoryid.'charge" class="form-control" value="'.$garment->charges.'" ready-only></td>
+                       <td>
+                       <select class="form-control" id="insp'.$garment->categoryid.'" >
+                        <option >Ok</option>
+                         <option >Stained</option>
+                         <option >Teer</option>
+                         <option>Faded</option>
+                        </select>
+                       </td>
+                       
+                       
+                        
+                            
+                      </tr>';
+                    }
+                  }
+                      ?>
+                     </tbody>
+                   
                   </table>
                   </div>
                     </div>

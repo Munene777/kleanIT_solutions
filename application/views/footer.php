@@ -50,12 +50,18 @@
     <!-- page script -->
     <script type="text/javascript" src="<?php echo base_url() ?>assets/bootstrap/js/customer.js"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/bootstrap/js/garment.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/bootstrap/js/sidemenuTweek.js"></script>
     
 
 
     <script>
       $(function () {
-        $("#orderProcessing").DataTable();
+        $("#orderProcessing").DataTable({
+
+          "scrollY":        "200px",
+        "scrollCollapse": true,
+        "paging":         false
+        });
         $("#readyGarments").DataTable();
 
          $("#alreadyGarments").DataTable();

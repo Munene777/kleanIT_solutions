@@ -82,7 +82,13 @@ class Welcome extends CI_Controller {
 
 	public function processOrder()
 	{
-		$this->load->view('pages/CustomerTransactions/processOrder');
+
+
+		$data= array(
+			'garments'=> $this->GarmentModel->getGarments()
+			);
+		
+		$this->load->view('pages/CustomerTransactions/processOrder',$data);
 	}
 	public function makePayment()
 	{
