@@ -29,44 +29,99 @@
                  <h3>Process Customer Order</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
+
+                 <!-- search form -->
+                  <div class="row">
+                            <div  class="col-md-4">
+                            
+          <form action="searchJobOrder" method="post">
+            <div class="input-group" id="toggleJobNoSearch">
+             <label for="jobNoSearch">Search a Job Order:</label>
+              <input type="text" name="jobNoSearch" id="jobNoSearch" class="form-control" placeholder="Search Job Order..."
+              value=" <?php if(!empty($client)){ 
+                    foreach ($client as $customer) {
+                      # code...
+                      echo $customer->jobcard_id;
+                    }
+                      
+                      } ?>  
+                ">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+          </div>
+          </div>
                    <form role="form" action="insertNewOrder" method="post" id="add_Order">
                 <div class="row">
                             <div  class="col-md-4">
-                            
-                  
-                    <div class="form-group">
+                          
+                    <div class="form-group" style="display: none" id="toggleJobNo">
                       <label for="jobNo">Job Order No:</label>
-                      <input type="text" class="form-control" id="jobNo" name="jobNo" placeholder="Job Order No" required="required">
+                      <input type="text" class="form-control" id="jobNoOrder" name="jobNoOrder" placeholder="Job Order No" required="required" value="" 
+                      >
                     </div>
 
                     
                      <div class="form-group">
                       <label for="lastname">Customer Name:</label>
-                      <input type="text" class="form-control" id="customerName" name="customerName" placeholder="Customer Name" required="required">
+                      <input type="text" class="form-control" id="customerName" name="customerName" placeholder="Customer Name" required="required" value=" <?php if(!empty($client)){ 
+                    foreach ($client as $customer) {
+                      # code...
+                      echo $customer->firstname.'  '.$customer->lastname;
+                    }
+                      
+                      } ?>  
+                " readonly>
                     </div>
                     <div class="form-group">
                       <label for="dropDate">Drop Date</label>
-                      <input type="date" class="form-control" id="dropDate" name="dropDate" placeholder="Drop Date" required="required">
+                      <input type="date" class="form-control" id="dropDate" name="dropDate" placeholder="Drop Date" required="required"  value=" <?php if(!empty($client)){ 
+                    foreach ($client as $customer) {
+                      # code...
+                      echo $customer->orderdate;
+                    }
+                      
+                      } ?>  
+                ">
                     </div>
                     <div class="form-group">
                       <label for="pickDate">Pickup Date</label>
-                      <input type="date" class="form-control" id="pickDate" name="pickDate" placeholder="Pick Date" required="required">
+                      <input type="date" class="form-control" id="pickDate" name="pickDate" placeholder="Pick Date" required="required" value=" <?php if(!empty($client)){ 
+                    foreach ($client as $customer) {
+                      # code...
+                      echo $customer->pickdate;
+                    }
+                      
+                      } ?>  
+                ">
                     </div>
 
                     <div class="form-group">
                       <label for="amount">Total Amount Due</label>
-                      <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount Due" required="required">
+                      <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount Due" required="required"
+                      value=" <?php if(!empty($garments)){ 
+                        $amount=0;
+                    foreach ($garments as $garment) {
+                      # code...
+                      $amount +=$garment->charges;
+                      
+                    }
+                      echo $amount;
+                      } ?>  
+                " readonly>
                     </div>
 
 
                    
                             </div>
                       <div class="col-md-8">
-
+ <button type="button" class="btn btn-info pull-right garmentOrder" data-toggle="modal" data-target="#add_garmentOrder_modal">New Garment Order</button></h3>
                       <table id="orderProcessing" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                      <th>Add to Order</th>
+                      
                       <th class="hidden">GarmentId</th>
                       <th>Garment Type</th>
                          <th>Service Type</th>
@@ -82,27 +137,17 @@
                     {
                       echo '
                       <tr>
-                      <td><input type="checkbox" class="selectedGarment" ></td>
-                      <td class="hidden">'.$garment->categoryid.'</td>
+                     
+                      <td class="hidden">'.$garment->garmentid.'</td>
                       <td>'.$garment->garmentype.'</td>
-                      <td> <select class="form-control" id="type'.$garment->categoryid.'" onchange="assignCharge(this.id)">
-                        <option value="'.$garment->charges.'">Normal</option>
-                         <option value="'.$garment->express.'">Express</option>
-                         <option value="'.$garment->special.'">Special</option>
-                         <option value="'.$garment->pressing.'">Pressing</option>
-                        </select>
+                      <td> '.$garment->typeservice.'
+                        
                         </td>
                         <td >'.$garment->description.'</td>
                         
                         <td >
-                        <input type="text" id="type'.$garment->categoryid.'charge" class="form-control" value="'.$garment->charges.'" ready-only></td>
-                       <td>
-                       <select class="form-control" id="insp'.$garment->categoryid.'" >
-                        <option >Ok</option>
-                         <option >Stained</option>
-                         <option >Teer</option>
-                         <option>Faded</option>
-                        </select>
+                       '.$garment->charges.'</td>
+                       <td>'.$garment->inspection.'
                        </td>
                        
                        
@@ -119,10 +164,10 @@
                     </div>
                     <div class="row">
                     <div class="col-md-3">
-                      <button type="button" class="btn btn-info pull-right" > New JOb Order</button>
+                      <button type="button" class="btn btn-info pull-right" onclick="newJobOrder()" > New JOb Order</button>
                     </div>
                     <div class="col-md-2">
-                     <button type="button" class="btn btn-info" > Save Record</button> 
+                     <button type="submit" class="btn btn-info" > Save Record</button> 
                     </div>
                     <div class="col-md-3">
                       <button type="button" class="btn btn-info pull-left" > Process Payment</button>
@@ -142,6 +187,10 @@
       </div><!-- /.content-wrapper -->
      
 
+<?php
+ $this->load->view('pages/CustomerTransactions/modals/garmentOrder');
+
+?> 
   <?php
  $this->load->view('footer');
 

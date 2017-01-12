@@ -3,10 +3,7 @@ jQuery(document)
 				function($) {
 					
 					
-				/*start the date picker*/
-
-   $("#readyDate").datepicker({dateFormat: 'yy-mm-dd'});
-
+			
 
    //edit ready status
 
@@ -118,3 +115,21 @@ function assignCharge(id){
 	//alert(id);
 	document.getElementById(id+"charge").value= document.getElementById(id).value;
 }
+
+function newJobOrder(){
+
+		//$('#add_Order')[0].reset();
+		$('#toggleJobNo').show();
+		$('#toggleJobNoSearch').hide();
+		$('#customerName').val("");
+		$('#dropdate').val("");
+		$('#pickdate').val("");
+		$('#amount').val("");
+		var table = $('#orderProcessing').DataTable();
+ 
+table
+    .clear()
+    .draw();
+	 $("#customerName").prop('readonly', false);
+}
+

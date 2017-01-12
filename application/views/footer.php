@@ -28,7 +28,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/daterangepicker/daterangepicker.js"></script>
     <!-- datepicker -->
-    <script src="<?php echo base_url() ?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="<?php echo base_url() ?>assets/bootstrap/js/jquery.datetimepicker.full.min.js"></script>
     <!-- DataTables -->
     <script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
@@ -55,6 +55,57 @@
 
 
     <script>
+    function fetchCharges() {
+ // alert($('#garmentTypeOrder').val());
+            /* $.ajax({
+            url: 'fetchCharges',
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            cache: false,
+            dataType: 'json',
+            data: {id:$('#garmentTypeOrder').val() },
+                success: function(data){
+
+
+                    
+                       alert("It worked");
+                    },
+                    error: function (response) {
+                            alert("An error occurred"+response);
+                        }
+
+
+           
+                        
+                        //var x=document.getElementById("idd");
+                        //document.getElementById(id).hide();
+                       //document.getElementById(location).reset();
+
+
+                    
+                
+            });*/
+
+            $.post('fetchCharges',{id:$('#garmentTypeOrder').val() },
+              function(data){
+                var charges= data.split(" ");
+
+                var optionText= ['Normal','Express','Special','Others'];
+
+                var options= document.getElementById("serviceType");
+
+                for(var i=0;i<charges.length;i++){
+                  var option= document.createElement("option");
+                  option.text=optionText[i];
+                  option.value=charges[i];
+                  options.add(option);
+
+                }
+                
+                
+              });
+        }
       $(function () {
         $("#orderProcessing").DataTable({
 
@@ -76,6 +127,19 @@
           "autoWidth": false
         });
       });
+
+
+       $('#pickDate').datetimepicker({
+        minDate:'2016/01/02', 
+  maxDate:'2017/12/31'
+       });
+       $('#dropDate').datetimepicker({
+
+       });
+
+       $('#readyDate').datetimepicker({
+
+       });
     </script>
   </body>
 </html>

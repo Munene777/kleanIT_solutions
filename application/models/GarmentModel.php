@@ -16,6 +16,54 @@ public function getGarments(){
         return NULL;
       }
     }
+    public function getGarment($id){
+  $this->db->from('category');
+  $this->db->where('categoryid',$id);
+  $query = $this->db->get();
+
+
+      if($query->num_rows() > 0)
+      {
+        return $query->result();
+      }else{
+        return NULL;
+      }
+    }
+
+public function getClientOrder($id){
+  $this->db->select('*');
+  $this->db->from('garment');
+  $this->db->join('category','garment.garmentype=category.categoryid');
+  $this->db->where('jobcard_id',$id);
+  $query = $this->db->get();
+
+
+      if($query->num_rows() > 0)
+      {
+        return $query->result();
+      }else{
+        return NULL;
+      }
+    }
+
+
+    public function getClient($id){
+       $this->db->select('*');
+  $this->db->from('order');
+  $this->db->join('customer','order.clientid=customer.customerid');
+  $this->db->where('jobcard_id',$id);
+  
+  $query = $this->db->get();
+
+
+      if($query->num_rows() > 0)
+      {
+        return $query->result();
+      }else{
+        return NULL;
+      }
+    }
+
 
 public function getOrders(){
   $this->db->select('*');

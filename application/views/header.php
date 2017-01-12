@@ -9,7 +9,7 @@
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/bootstrap/font/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/bootstrap/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
@@ -24,7 +24,7 @@
     <!-- jvectormap -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
     <!-- Date Picker -->
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/datepicker/datepicker3.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/bootstrap/css/jquery.datetimepicker.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/daterangepicker/daterangepicker-bs3.css">
     <!-- bootstrap wysihtml5 - text editor -->

@@ -85,11 +85,42 @@ class Welcome extends CI_Controller {
 
 
 		$data= array(
-			'garments'=> $this->GarmentModel->getGarments()
+			'garments'=> '',
+			'client'=>'',
+			'category'=> $this->GarmentModel->getGarments()
 			);
 		
 		$this->load->view('pages/CustomerTransactions/processOrder',$data);
 	}
+
+	public  function searchJobOrder(){
+		$id= $this->input->post('jobNoSearch');
+		
+
+		 $data= array(
+			'garments'=> $this->GarmentModel->getClientOrder($id),
+			'client'=> $this->GarmentModel->getClient($id),
+			'category'=> $this->GarmentModel->getGarments()
+
+			);
+
+		 $this->load->view('pages/CustomerTransactions/processOrder',$data);
+
+	}
+
+	public  function fetchCharges(){
+		$id=$_POST['id'];
+		$res= $this->GarmentModel->getGarment($id);
+		$return= "";
+		foreach ($res as $charge) {
+		 $return= $charge->charges.' '.$charge->express.' '.$charge->special.' '.$charge->others;
+		}
+
+		echo $return;
+	}
+
+	
+
 	public function makePayment()
 	{
 		$this->load->view('pages/CustomerTransactions/makePayment');
