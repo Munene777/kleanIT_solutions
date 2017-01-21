@@ -37,7 +37,8 @@
                   
                     <div class="form-group">
                       <label for="jobNo">Job Order No:</label>
-                      <select class="form-control" id="garmentPayment" name="garmentPayment" onchange="fetchOrder(this.form)">
+                      <select class="form-control" id="garmentPayment" name="garmentPayment" onchange="fetchOrder(this.form)" 
+                      value="">
                       <?php if(!empty($client)){ 
                     foreach ($client as $customer) {
                       # code...

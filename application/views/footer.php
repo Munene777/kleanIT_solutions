@@ -120,7 +120,8 @@
         "paging":         false
         });
         $("#readyGarments").DataTable();
-
+         $("#paymentsSearch").DataTable();
+         $("#orderPaymentProcessing").DataTable();
          $("#alreadyGarments").DataTable();
         $("#quickSearchCustomers").DataTable();
         $("#customers").DataTable();

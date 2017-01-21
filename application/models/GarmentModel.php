@@ -80,6 +80,24 @@ public function getOrders(){
       }
     }
 
+    public function getPaidOrders(){
+  $this->db->select('order.jobcard_id,category.garmentype,phone,firstname,garment.charges,deposit,datecollected');
+  $this->db->from('order');
+  $this->db->join('customer','order.clientid=customer.customerid');
+  $this->db->join('garment','garment.jobcard_id=order.jobcard_id');
+   $this->db->join('category','garment.garmentype=category.categoryid');
+  $this->db->where('collected','Yes');
+  $query = $this->db->get();
+
+
+      if($query->num_rows() > 0)
+      {
+        return $query->result();
+      }else{
+        return NULL;
+      }
+    }
+
 
 public function getReadyGarments(){
   $this->db->select('*');

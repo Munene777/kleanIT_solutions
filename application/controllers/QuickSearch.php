@@ -22,6 +22,15 @@ public function customers()
 	}
 
 
+public function payments()
+	{
+		$data= array(
+			'payments'=> $this->GarmentModel->getPaidOrders()
+			);
+		$this->load->view('pages/QuickSearch/payments',$data);
+	}
+
+
 
 
 }
