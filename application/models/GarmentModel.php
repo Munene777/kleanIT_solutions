@@ -110,6 +110,28 @@ public function getReadyGarments(){
        }
     }
 
+      public function insertNewClientOrder($order){
+    $new= $this->db->insert('order',$order);
+
+   
+       if($new){
+        return true;
+       }else{
+        return false;
+       }
+    }
+
+    public function insertNewOrder($garment){
+    $new= $this->db->insert('garment',$garment);
+
+   
+       if($new){
+        return true;
+       }else{
+        return false;
+       }
+    }
+
 
       public function updateGarment($id,$change){
       $this->db->where('categoryid',$id);

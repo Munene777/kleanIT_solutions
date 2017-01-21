@@ -87,20 +87,25 @@ class Welcome extends CI_Controller {
 		$data= array(
 			'garments'=> '',
 			'client'=>'',
-			'category'=> $this->GarmentModel->getGarments()
+			'category'=> $this->GarmentModel->getGarments(),
+			'customers'=> $this->CustomerModel->getCustomers()
 			);
 		
 		$this->load->view('pages/CustomerTransactions/processOrder',$data);
 	}
 
-	public  function searchJobOrder(){
+	public  function searchJobOrder($id=''){
+
+
+		if($id == ''){
 		$id= $this->input->post('jobNoSearch');
-		
+		}
 
 		 $data= array(
 			'garments'=> $this->GarmentModel->getClientOrder($id),
 			'client'=> $this->GarmentModel->getClient($id),
-			'category'=> $this->GarmentModel->getGarments()
+			'category'=> $this->GarmentModel->getGarments(),
+			'customers'=> $this->CustomerModel->getCustomers()
 
 			);
 
@@ -119,11 +124,62 @@ class Welcome extends CI_Controller {
 		echo $return;
 	}
 
+	//insert a new Order
+public function insertNewOrder(){
+
+
+		$serviceAmount= explode(",",$this->input->post('serviceType'));
+
+		$data= array(
+			'jobcard_id'=>$this->input->post('newGarmentOrder'),
+			'garmentype'=> $this->input->post('garmentTypeOrder'),
+			'typeservice'=>$serviceAmount[0],
+			'inspection'=> $this->input->post('garmentInspection'),
+			'charges'=> $serviceAmount[0],
+			'collected'=> $this->input->post('No')
+			);
+	$id= $this->input->post('newGarmentOrder');
+		if($this->GarmentModel->insertNewOrder($data))
+
+		$this->searchJobOrder($id);
+	}
+
+
+
+	//insert a new Customer order
+public function insertNewClientOrder(){
+
+		$data= array(
+			'clientid'=>$this->input->post('newCustomerName'),
+			'orderdate'=> $this->input->post('dropDate'),
+			'pickdate'=> $this->input->post('pickDate'),
+			'jobcard_id'=> $this->input->post('jobNoOrder'),
+			'readystatus'=>'No'
+			);
+	$id= $this->input->post('jobNoOrder');
+		if($this->GarmentModel->insertNewClientOrder($data))
+
+		$this->searchJobOrder($id);
+	}
+
 	
 
-	public function makePayment()
+	public function makePayment($client='')
 	{
-		$this->load->view('pages/CustomerTransactions/makePayment');
+		$data= array(
+			'orders'=> $this->GarmentModel->getOrders(),
+			'client'=>$client
+			);
+		$this->load->view('pages/CustomerTransactions/makePayment',$data);
+	}
+
+
+	public  function processPayment(){
+		$id=$this->input->post('garmentPayment');
+		$client= $this->GarmentModel->getClient($id);
+
+		$this->makePayment($client);
+		
 	}
 
 	

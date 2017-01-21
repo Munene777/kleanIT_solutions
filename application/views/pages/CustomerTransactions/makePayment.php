@@ -30,33 +30,76 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   
- <form role="form" action="insertNewOrder" method="post" id="add_Order">
+ <form role="form" action="processPayment" method="post" id="process_payment">
                 <div class="row">
                             <div  class="col-md-4">
                             
                   
                     <div class="form-group">
                       <label for="jobNo">Job Order No:</label>
-                      <input type="text" class="form-control" id="jobNo" name="jobNo" placeholder="Job Order No" required="required">
+                      <select class="form-control" id="garmentPayment" name="garmentPayment" onchange="fetchOrder(this.form)">
+                      <?php if(!empty($client)){ 
+                    foreach ($client as $customer) {
+                      # code...
+                      echo '<option value="'.$customer->jobcard_id.'">'.$customer->jobcard_id.'</option>';
+                    }
+                      
+                      } ?>
+                      <option>....</option>
+                      <?php
+                      if(!empty($orders))
+                        foreach ($orders as $order) {
+                          # code...
+                          echo '<option value="'.$order->jobcard_id.'">'.$order->jobcard_id.'</option>';
+                        }
+                        ?>
+                      </select>
                     </div>
 
                     
                      <div class="form-group">
                       <label for="lastname">Customer Name:</label>
-                      <input type="text" class="form-control" id="customerName" name="customerName" placeholder="Customer Name" required="required">
+                      <input type="text" class="form-control" id="customerName" name="customerName" placeholder="Customer Name" required="required" value="<?php if(!empty($client)){ 
+                    foreach ($client as $customer) {
+                      # code...
+                      echo $customer->firstname.' '.$customer->lastname;
+                    }
+                      
+                      } ?>" readonly>
                     </div>
                     <div class="form-group">
                       <label for="dropDate">Drop Date</label>
-                      <input type="date" class="form-control" id="dropDate" name="dropDate" placeholder="Drop Date" required="required">
+                      <input type="date" class="form-control" id="dropDateMP" name="dropDateMP" placeholder="Drop Date" required="required"  value=" <?php if(!empty($client)){ 
+                    foreach ($client as $customer) {
+                      # code...
+                      echo $customer->orderdate;
+                    }
+                      
+                      } ?>  
+                " readonly>
                     </div>
                     <div class="form-group">
                       <label for="pickDate">Pickup Date</label>
-                      <input type="date" class="form-control" id="pickDate" name="pickDate" placeholder="Pick Date" required="required">
+                      <input type="date" class="form-control" id="pickDateMP" name="pickDateMP" placeholder="Pick Date" required="required" value=" <?php if(!empty($client)){ 
+                    foreach ($client as $customer) {
+                      # code...
+                      echo $customer->pickdate;
+                    }
+                      
+                      } ?>  
+                " readonly>
                     </div>
 
                     <div class="form-group">
                       <label for="ready">Job Order Ready ?</label>
-                      <input type="text" class="form-control" id="ready" name="ready" placeholder="Ready?" required="required">
+                      <input type="text" class="form-control" id="ready" name="ready" placeholder="Ready?" required="required"
+                      value="<?php if(!empty($client)){ 
+                    foreach ($client as $customer) {
+                      # code...
+                      echo $customer->readystatus;
+                    }
+                      
+                      } ?>" readonly>
                     </div>
 
 

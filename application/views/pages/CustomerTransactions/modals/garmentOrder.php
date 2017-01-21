@@ -9,7 +9,7 @@
         <h4 class="modal-title">New Garment Order</h4>
       </div>
       <div class="modal-body">
-         <form role="form" action="insertNewGarment" method="post" id="add_garment">
+         <form role="form" action="insertNewOrder" method="post" id="add_Order">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="garmentype">Garment Type</label>
@@ -19,7 +19,7 @@
                       if(!empty($category))
                         foreach ($category as $cat) {
                           # code...
-                          echo '<option value="'.$cat->categoryid.'">'.$cat->garmentype.'</optio>';
+                          echo '<option value="'.$cat->categoryid.'">'.$cat->garmentype.'</option>';
                         }
                         ?>
                       </select>
@@ -44,7 +44,7 @@
                     </div>
 
                     <input type="hidden" name="newGarmentOrder" id="newGarmentOrder" value="not_set">
-                    <input type="hidden" name="serviceTypeText" id="serviceTypeText" value="not_set">
+                    
 
                     
 

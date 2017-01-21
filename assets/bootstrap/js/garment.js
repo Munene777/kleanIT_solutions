@@ -4,7 +4,12 @@ jQuery(document)
 					
 					
 			
+					//new garment order
+					$(".garmentOrder").click(function(){
 
+						$("#newGarmentOrder").val($("#jobNoSearch").val());
+						
+					})
    //edit ready status
 
 
@@ -121,7 +126,10 @@ function newJobOrder(){
 		//$('#add_Order')[0].reset();
 		$('#toggleJobNo').show();
 		$('#toggleJobNoSearch').hide();
-		$('#customerName').val("");
+		$('#SearchcustomerName').hide();
+		$('#newcustName').show();
+		$('#submitOrder').prop('disabled',false);
+		$('#garmentOrder').prop('disabled',true);
 		$('#dropdate').val("");
 		$('#pickdate').val("");
 		$('#amount').val("");

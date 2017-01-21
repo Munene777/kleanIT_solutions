@@ -53,7 +53,7 @@
           </form>
           </div>
           </div>
-                   <form role="form" action="insertNewOrder" method="post" id="add_Order">
+                   <form role="form" action="insertNewClientOrder" method="post" id="add_CustOrder">
                 <div class="row">
                             <div  class="col-md-4">
                           
@@ -64,8 +64,9 @@
                     </div>
 
                     
-                     <div class="form-group">
+                     <div class="form-group" id="SearchcustomerName">
                       <label for="lastname">Customer Name:</label>
+
                       <input type="text" class="form-control" id="customerName" name="customerName" placeholder="Customer Name" required="required" value=" <?php if(!empty($client)){ 
                     foreach ($client as $customer) {
                       # code...
@@ -75,6 +76,23 @@
                       } ?>  
                 " readonly>
                     </div>
+
+                    <div class="form-group" style="display:none" id="newcustName">
+                      <label for="lastname">Customer Name:</label>
+
+                      <select id="newCustomerName" name="newCustomerName" class="form-control" >
+                        <?php if(!empty($customers)){ 
+                    foreach ($customers as $customer) {
+                      # code...
+                      echo '<option value="'.$customer->customerid.'"> '.$customer->firstname.'  '.$customer->lastname.'</option>';
+                    }
+                      
+                      } ?>
+                </select>
+                    </div>
+
+
+                     
                     <div class="form-group">
                       <label for="dropDate">Drop Date</label>
                       <input type="date" class="form-control" id="dropDate" name="dropDate" placeholder="Drop Date" required="required"  value=" <?php if(!empty($client)){ 
@@ -117,7 +135,8 @@
                    
                             </div>
                       <div class="col-md-8">
- <button type="button" class="btn btn-info pull-right garmentOrder" data-toggle="modal" data-target="#add_garmentOrder_modal">New Garment Order</button></h3>
+ <button type="button" id="garmentOrder" class="btn btn-info garmentOrder" data-toggle="modal" data-target="#add_garmentOrder_modal">New Garment Order</button>
+                <div class="table-responsive">
                       <table id="orderProcessing" class="table table-bordered table-striped">
                     <thead>
                       <tr>
@@ -161,16 +180,17 @@
                    
                   </table>
                   </div>
+                  </div>
                     </div>
                     <div class="row">
                     <div class="col-md-3">
                       <button type="button" class="btn btn-info pull-right" onclick="newJobOrder()" > New JOb Order</button>
                     </div>
                     <div class="col-md-2">
-                     <button type="submit" class="btn btn-info" > Save Record</button> 
+                     <button type="submit" id="submitOrder" class="btn btn-info" disabled="disabled"> Save Record</button> 
                     </div>
                     <div class="col-md-3">
-                      <button type="button" class="btn btn-info pull-left" > Process Payment</button>
+                      <a href="<?php echo base_url() ?>index.php/Welcome/makePayment"><button type="button" class="btn btn-info pull-left" > Process Payment</button></a>
                     </div>
                       
                        

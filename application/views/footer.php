@@ -98,13 +98,19 @@
                 for(var i=0;i<charges.length;i++){
                   var option= document.createElement("option");
                   option.text=optionText[i];
-                  option.value=charges[i];
+                  option.value=optionText[i]+','+charges[i];
                   options.add(option);
 
                 }
                 
                 
               });
+        }
+
+        function fetchOrder(form){
+
+       form.submit();
+
         }
       $(function () {
         $("#orderProcessing").DataTable({
