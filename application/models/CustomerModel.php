@@ -44,6 +44,20 @@ public function getCustomers(){
 
     }
 
+    public function editDeposit($id,$change){
+      $this->db->where('garmentid',$id);
+
+      if($this->db->update('garment',$change)){
+
+        return true;
+      }else
+      {
+        return false;
+      }
+
+    }
+
+
       public function delCustomer($id){
      
     

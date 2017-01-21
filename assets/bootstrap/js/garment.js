@@ -106,6 +106,30 @@ jQuery(document)
 
 									});
 
+
+							$(".editDeposit").click(
+								function(){
+
+									//alert("heheeh");
+									$("#editDepositModal").modal("show");
+									$("#orderCharges")
+												.val(
+														$(this).closest('tr')
+																.children()[3].textContent);
+												$("#depositPaid")
+												.val(
+														$(this).closest('tr')
+																.children()[4].textContent);
+												$("#garmentId")
+												.val(
+														$(this).closest('tr')
+																.children()[0].textContent);
+												$("#jobcardId")
+												.val(
+														$(this).closest('tr')
+																.children()[7].textContent);
+								});
+
 				
 
 

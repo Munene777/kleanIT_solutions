@@ -87,6 +87,7 @@ class Welcome extends CI_Controller {
 		$data= array(
 			'garments'=> '',
 			'client'=>'',
+			'orders'=> $this->GarmentModel->getOrders(),
 			'category'=> $this->GarmentModel->getGarments(),
 			'customers'=> $this->CustomerModel->getCustomers()
 			);
@@ -105,7 +106,8 @@ class Welcome extends CI_Controller {
 			'garments'=> $this->GarmentModel->getClientOrder($id),
 			'client'=> $this->GarmentModel->getClient($id),
 			'category'=> $this->GarmentModel->getGarments(),
-			'customers'=> $this->CustomerModel->getCustomers()
+			'customers'=> $this->CustomerModel->getCustomers(),
+			'orders'=> $this->GarmentModel->getOrders()
 
 			);
 
@@ -163,23 +165,41 @@ public function insertNewClientOrder(){
 	}
 
 	
-
-	public function makePayment($client='')
+//make payment landing function
+	public function makePayment($client='',$order='')
 	{
 		$data= array(
 			'orders'=> $this->GarmentModel->getOrders(),
-			'client'=>$client
+			'client'=>$client,
+			'clientOrders'=>$order
 			);
 		$this->load->view('pages/CustomerTransactions/makePayment',$data);
 	}
 
-
-	public  function processPayment(){
+//loading payment details of a single client
+	public  function processPayment($id=''){
+		if($id == ''){
 		$id=$this->input->post('garmentPayment');
+	}
+	
 		$client= $this->GarmentModel->getClient($id);
-
-		$this->makePayment($client);
+		$order=  $this->GarmentModel->getClientOrder($id);
+		$this->makePayment($client,$order);
 		
+	}
+
+
+	//edit deposit detials
+public function editDeposit(){
+
+		$data= array(
+			
+			'deposit'=> $this->input->post('depositPaid')
+			);
+	$id= $this->input->post('garmentId');
+		if($this->CustomerModel->editDeposit($id,$data))
+
+		$this->processPayment($this->input->post("jobcardId"));
 	}
 
 	

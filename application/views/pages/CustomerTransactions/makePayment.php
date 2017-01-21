@@ -45,7 +45,7 @@
                     }
                       
                       } ?>
-                      <option>....</option>
+                      <option>...</option>
                       <?php
                       if(!empty($orders))
                         foreach ($orders as $order) {
@@ -110,19 +110,48 @@
                     <div class="col-md-3">
                       <div class="form-group">
                       <label for="amountDue">Amount Due</label>
-                      <input type="text" class="form-control" id="amountDue" name="amountDue" value="0.00" required="required">
+                      <input type="text" class="form-control" id="amountDue" name="amountDue" value="
+                      <?php
+                       $amount=0.00;
+                       if(!empty($clientOrders)){
+
+                      foreach ($clientOrders as $order)
+                    {
+                      $amount += $order->charges;
+
+                    }
+                  }
+                    echo $amount;?>
+
+
+                      " readonly>
                     </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                      <div class="form-group">
                       <label for="deposit">Deposit</label>
-                      <input type="text" class="form-control" id="deposit" name="deposit" value="0.00" required="required">
+                      <input type="text" class="form-control" id="deposit" name="deposit" value="
+                      <?php
+                       $deposit=0.00;
+                       if(!empty($clientOrders)){
+
+                      foreach ($clientOrders as $dep)
+                    {
+                      $deposit += $dep->deposit;
+
+                    }
+                  }
+                    echo $deposit;?>" readonly>
                     </div>
                     </div>
                     <div class="col-md-3">
                      <div class="form-group">
                       <label for="balance">Balance</label>
-                      <input type="text" class="form-control" id="balance" name="balance" value="0.00" required="required">
+                      <input type="text" class="form-control" id="balance" name="balance" value="
+                      <?php
+                       
+                       
+                    echo $amount- $deposit;?>" readonly>
                     </div>
                     </div>
                       
@@ -133,42 +162,68 @@
 
                     <div class="row">
                       <div class="col-md-8">
-                    <button type="button" class="btn btn-info pull-right" > New Payment</button>
+                    <a href="<?php echo base_url() ?>index.php/Welcome/makePayment"><button type="button" class="btn btn-info pull-right" > New Payment</button></a>
                     </div>
                     </div>
                     <br>
-                     <div class="row">
-                      <div class="col-md-8">
-                    <button type="button" class="btn btn-info pull-right" > Save Record</button>
-                    </div>
-                    </div>
+                    
                       </div>
 
                       </div>
                       <div class="row">
-                      <div class="col-md-12">
-                      <table id="orderProcessing" class="table table-bordered table-striped">
+                      <div class="col-md-12 table-responsive">
+                      <table id="orderPaymentProcessing" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                      <th>Garment No</th>
+                      <th class="hidden">Garment No</th>
+                      <th>Garment Type</th>
                          <th>Service Type</th>
                         <th>Charges</th>
                         <th>Deposit</th>
                         <th>Picked?</th>
                         <th>Date Picked</th>
+                        <th class="hidden">Jobcard ID</th>
                       </tr>
                     </thead>
                     <tbody>
-
+                       <?php
+                       if(!empty($clientOrders)){
+                      foreach ($clientOrders as $order)
+                    {
+                      echo '
+                      <tr>
+                     
+                      <td class="hidden">'.$order->garmentid.'</td>
+                      <td>'.$order->garmentype.'</td>
+                      <td> '.$order->typeservice.'
+                        
+                        </td>
+                        <td >'.$order->charges.'</td>
+                        
+                        <td >'.$order->deposit.' <i class="fa fa-edit pull-right editDeposit"></i></td>
+                       <td>'.$order->collected.'
+                       </td>
+                       <td>'.$order->datecollected.'
+                       </td>
+                       
+                       <td class="hidden">'.$order->jobcard_id.'</td>
+                        
+                            
+                      </tr>';
+                    }
+                  }
+                      ?>
                      </tbody>
                     <tfoot>
                       <tr>
-                     <th>Garment No</th>
+                      <th class="hidden">Garment No</th>
+                      <th>Garment Type</th>
                          <th>Service Type</th>
                         <th>Charges</th>
                         <th>Deposit</th>
                         <th>Picked?</th>
                         <th>Date Picked</th>
+                        <th class="hidden">Jobcard ID</th>
                       </tr>
                     </tfoot>
                   </table>
@@ -183,7 +238,10 @@
           </div><!-- /.row -->
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
-     
+     <?php
+ $this->load->view('pages/CustomerTransactions/modals/editDepositModal');
+
+?> 
 
   <?php
  $this->load->view('footer');

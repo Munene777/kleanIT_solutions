@@ -35,20 +35,27 @@
                             <div  class="col-md-4">
                             
           <form action="searchJobOrder" method="post">
-            <div class="input-group" id="toggleJobNoSearch">
+            <div class="form-group" id="toggleJobNoSearch">
+
              <label for="jobNoSearch">Search a Job Order:</label>
-              <input type="text" name="jobNoSearch" id="jobNoSearch" class="form-control" placeholder="Search Job Order..."
-              value=" <?php if(!empty($client)){ 
+             <select class="form-control" id="jobNoSearch" name="jobNoSearch" onchange="fetchOrder(this.form)">
+                      <?php if(!empty($client)){ 
                     foreach ($client as $customer) {
                       # code...
-                      echo $customer->jobcard_id;
+                      echo '<option value="'.$customer->jobcard_id.'">'.$customer->jobcard_id.'</option>';
                     }
                       
-                      } ?>  
-                ">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
+                      } ?>
+                      <option>...</option>
+                      <?php
+                      if(!empty($orders))
+                        foreach ($orders as $order) {
+                          # code...
+                          echo '<option value="'.$order->jobcard_id.'">'.$order->jobcard_id.'</option>';
+                        }
+                        ?>
+                      </select>
+             
             </div>
           </form>
           </div>
