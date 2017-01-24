@@ -194,6 +194,19 @@ public function getReadyGarments(){
        }
     }
 
+    public function getAllGarmentsOrdered(){
+
+      $this->db->from('garment');
+
+      $query= $this->db->get();
+       if($query->num_rows() > 0)
+      {
+        return $query->result();
+      }else{
+        return NULL;
+      }
+    }
+
 
 
 

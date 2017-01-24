@@ -148,7 +148,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i>Job Order Payment Summary</a></li>
+                <li><a href="<?php echo base_url() ?>index.php/DrycleanReports/jobOrderReport"><i class="fa fa-circle-o"></i>Job Order Payment Summary</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>Detailed Customer Payment</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>KleanIT Customer's Profile</a></li>
               </ul>

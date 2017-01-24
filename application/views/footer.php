@@ -123,6 +123,8 @@
          $("#paymentsSearch").DataTable();
          $("#orderPaymentProcessing").DataTable();
          $("#alreadyGarments").DataTable();
+          $("#jobOrderPaymentReport").DataTable();
+         
         $("#quickSearchCustomers").DataTable();
         $("#customers").DataTable();
         $('#example2').DataTable({
